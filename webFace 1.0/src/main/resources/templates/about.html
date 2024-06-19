@@ -1,0 +1,16 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/header :: header(~{::title})}"></head>
+    <link rel="stylesheet" th:href="@{/css/about.css}" />
+    <title>JobScraper - About</title>
+</head>
+<body class="d-flex flex-column justify-content-between h-100">
+<div class="container-lg">
+    <section th:replace="~{fragments/nav-buttons :: nav}"></section>
+    <section th:replace="~{fragments/about-text :: about-text}"></section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>

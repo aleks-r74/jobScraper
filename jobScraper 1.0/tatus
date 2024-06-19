@@ -1,0 +1,71 @@
+[33mcommit c23498a84d47e743ac5bd47507a3ae4a30a330db[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Alex <r210391@outlook.com>
+Date:   Sat May 25 21:07:26 2024 -0400
+
+    added llm daemon
+
+[33mcommit 240094971d8ee65512caf65d6a8c46d133e8cd95[m
+Author: Alex <r210391@outlook.com>
+Date:   Sat May 25 10:53:04 2024 -0400
+
+    code refactoring, interfaces introduced
+
+[33mcommit 82a633c8126c1c73ebc9a6c9d66dba94ca87f5a4[m
+Author: Alex <r210391@gmail.com>
+Date:   Thu May 23 22:24:11 2024 -0400
+
+    rest endpoint added. System integration passed. added new method readLinks to FileService
+
+[33mcommit dcefadcd7bac62bb1665e35ca36ee7bd4795853b[m
+Author: Alex <r210391@gmail.com>
+Date:   Thu May 23 19:58:02 2024 -0400
+
+    added rest endpoints for updating user settings
+
+[33mcommit 38510f4328d6e9afb938261a7bf015d7a6ce75d6[m
+Author: Alex <r210391@gmail.com>
+Date:   Thu May 23 14:52:06 2024 -0400
+
+    fixed bug with stale element reference that lead to hangin
+
+[33mcommit 4ef0d6fe7f44792fc414915f925b5f17a9f1113a[m
+Author: Alex <r210391@gmail.com>
+Date:   Wed May 22 23:24:46 2024 -0400
+
+    Added FileService class, fixed bug in runJobTitleParsing()
+
+[33mcommit 293550cd2f3b7f0addbd63f5d7b9859152d15a86[m
+Author: Alex <r210391@gmail.com>
+Date:   Wed May 22 18:25:46 2024 -0400
+
+    job description is limited to 4096 symbols in fillDescription()
+
+[33mcommit df1ad76d743ea615368f548a26b21c8552d78e02[m
+Author: Alex <r210391@gmail.com>
+Date:   Wed May 22 16:44:06 2024 -0400
+
+    Before adding Spring Security
+
+[33mcommit 20e4a262b88ba66d45d658364a5535cea66f0395[m
+Author: Alex <r210391@gmail.com>
+Date:   Wed May 22 10:45:55 2024 -0400
+
+    JobCard.notes now added to DB as nulls and not empty string
+
+[33mcommit 16431d6d728159294065b1fe5a59de51d25399ef[m
+Author: Alex <r210391@gmail.com>
+Date:   Mon May 20 18:06:29 2024 -0400
+
+    changed schema, column applied type change to DATETIME
+
+[33mcommit ee8801734e146ee3ab1b526915c88f36154c976a[m
+Author: Alex <r210391@gmail.com>
+Date:   Sat May 18 12:58:56 2024 -0400
+
+    browser saves session and cookies, stays logged in
+
+[33mcommit 271f929c649867a86e4528b411397e8f7644b24d[m
+Author: Alex <r210391@gmail.com>
+Date:   Sat May 18 10:26:35 2024 -0400
+
+    Parser finished. No assessment module

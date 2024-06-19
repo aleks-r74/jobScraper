@@ -1,0 +1,30 @@
+About the candidate
+
+Education:
+ -Bachelor's degree in Computer Science
+
+Work experience:
+ - 2 years as a software tester
+ - 2 year as a software developer
+
+Certificates:
+ -ISTQB Software tester
+ -Java Developer
+ -Spring Boot developer
+
+Tools:
+ -Selenium WebDriver,  Behave (Cucumber), Gherkin, JUnit, PyTest, Postman, JMeter, Jenkins, GIT
+ -Programming languages: Java, Python, SQL, JavaScript, HTML, CSS
+ -Frameworks:  Spring Boot, Spring Security, Hibernate, JPA
+ -Linux, AWS services
+ -Methodology: Agile/SCRUM
+
+Other:
+Open Work Authorization
+
+I'm not a good fit if the job requires:
+ - US citizenship
+ - Secret clearance
+ - Node.js
+ - Django
+ - PHP

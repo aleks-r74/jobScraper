@@ -1,0 +1,43 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/header :: header(~{::title})}"></head>
+    <title id="pageTitle">Job Scraper - Settings</title>
+</head>
+<body class="d-flex flex-column justify-content-between h-100">
+    <div class="container-lg">
+        <form action="/settings" method="post" >
+            <section th:replace="~{fragments/nav-buttons :: nav}"></section>
+
+            <div th:if="${param.saved}"><p th:text="'Saved on '+ ${param.saved}" class="white"></p></div>
+            <div th:if="${param.notSaved}"><p class="white">Error during saving</p></div>
+
+            <section>
+              <div class="mb-3">
+                    <label for="saveKeywords" class="form-label">Save only job titles that have one of these keywords:</label>
+                    <textarea id="saveKeywords" th:text="${saveKeywords}" class="form-control" name="saveKeywords" rows="2" placeholder="Use comma as a separator"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="stopKeywords" class="form-label">Exclude job titles with these keywords:</label>
+                <textarea id="stopKeywords" th:text="${stopKeywords}" class="form-control" name="stopKeywords" rows="2" placeholder="Use comma as a separator"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="links" class="form-label">Links for parsing:</label>
+                <textarea id="links" th:text="${links}" class="form-control" name="links" rows="8" placeholder="One link per line"></textarea>
+              </div>
+              <div class="mb-3">
+                  <label for="links" class="form-label">Resume:</label>
+                  <textarea id="resume" th:text="${resume}" class="form-control" name="resume" rows="8"></textarea>
+              </div>
+
+            </section>
+
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-dark" type="submit" >Save</button>
+            </div>
+      </form>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

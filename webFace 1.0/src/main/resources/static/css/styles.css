@@ -1,0 +1,185 @@
+body{
+  background-color: #75b798;
+  color: white;
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.applied{
+    background-color: #F9F0F5;
+}
+.white{
+    color: white;
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+
+pre {
+  white-space: pre-wrap;       /* Wraps the text */
+  word-wrap: break-word;       /* Breaks long words */
+  overflow-wrap: break-word;   /* Ensures wrapping of long words in different browsers */
+  max-width: 100%;             /* Limits the width to the container's width */
+  overflow: auto;              /* Adds scrollbars if necessary */
+  font-size: 0.8rem;
+}
+
+.job-item{
+   display: flex;
+   flex-direction: column;
+}
+
+.actions{
+    background-color:aliceblue;
+    align-self: flex-start;
+    border-radius: 10%;
+    padding: 5px 5px;
+    margin: 1px 1px;
+    font-size: 0.75rem;
+
+}
+.description{
+    padding: 5px;
+}
+.description p{
+    font-size: 0.85rem;
+    text-align: justify;
+}
+
+.pagination .page-item .page-link {
+    background-color: lightgoldenrodyellow; /* Custom background color */
+    color: #333; /* Custom text color */
+    border-color: fff;
+  }
+
+  /* Hover state */
+  .pagination .page-item .page-link:hover {
+    background-color:#6c757d; /* Custom background color on hover */
+    border-color: fff;
+    color: #fff; /* Custom text color on hover */
+  }
+
+  /* Active state */
+  .pagination .page-item.active .page-link {
+    background-color:black; /* Custom background color for active page */
+    border-color: fff; /* Match border color with background color */
+    color: #fff; /* Custom text color for active page */
+  }
+
+  /* Disabled state */
+    .pagination .page-item.disabled .page-link{
+      background-color: gold;
+    }
+
+  .pagination{
+    margin: 0px 0px 0px 2px;
+    height: 26px;
+  }
+
+  .control-line{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 5px;
+}
+
+  .job-attributes{
+    display: flex;
+  }
+
+.notes{
+  background-color: palevioletred;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+@Media(max-width:555px){
+
+  .job-attributes{
+      display: flex;
+      flex-direction: column;
+  }
+    .company{
+    display: none;
+  }
+}
+
+#tabs h6.section-title{
+    padding: 20 0 20;
+    color: #fff;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #f3f3f3;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 4px solid !important;
+    font-size: 1.2rem;
+
+}
+#tabs .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #eee;
+    font-size: 1.2rem;
+}
+#tabs {
+  padding-bottom: 20px;
+}
+
+.nocontent{
+    font-size: 5rem;
+    text-align: center;
+    height: 300px;
+    margin-top:100px;
+    }
+
+.caveat-text {
+  font-family: "Caveat brush", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lilita-one-text {
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h5{
+  color:#015d30;
+  padding: 10 0 0;
+  margin: 0;
+}
+ul{
+  margin-bottom: 0;
+}
+p{
+  margin-bottom: 0;
+}
+
+.tbl{
+  padding-right: 25px;
+  font-weight: 700;
+}
+table{
+  margin: 5 35 10;
+  color: #243919;
+}
+.carousel{
+  margin: 20px 0 10;
+}
+.slide{
+  width: 75%;
+}
+@media (max-width: 500px) {
+  .slide {
+    width: 100%;
+  }
+}
+
+.slide img{
+  border-radius: 50px;
+}

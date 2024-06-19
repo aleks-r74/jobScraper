@@ -1,0 +1,132 @@
+<section th:fragment="about-text" class="container-lg">
+    <div>
+        <h5>What is it?</h5>
+        <p>This web app was built as a personal AI Assistant to showcase my development skills.</p>
+    </div>
+    <div>
+        <h5>What problem does it solve?</h5>
+        <p>It saves my time by autonomously parsing job postings and making human-like decisions about them, thanks to an LLM (Large Language Model).</p>
+    </div>
+
+    <div>
+        <h5>What technology does it use?</h5>
+        <p>The emphasis in this project is on back-end technology.</p>
+        <table class="">
+            <tr>
+                <td class="tbl"> Languages </td> <td > Java SE, JPQL </td>
+            </tr>
+            <tr>
+                <td class="tbl"> Framework </td> <td > Spring Boot </td>
+            </tr>
+            <tr>
+                <td class="tbl"> Starters </td> <td > Spring MVC and REST, Spring Data JPA, Spring Security, Thymeleaf </td>
+            </tr>
+            <tr>
+                <td class="tbl"> Automation </td> <td > Selenium WebDriver </td>
+            </tr>
+            <tr>
+                <td class="tbl"> Database </td> <td > MySQL </td>
+            </tr>
+            <tr>
+                <td class="tbl"> Front-end </td> <td > Bootstrap, HTML, CSS, Flex </td>
+            </tr>
+            <tr>
+                <td class="tbl"> LLM </td> <td > OpenAI, Ollama </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="smallScreen">
+        <div>
+            <iframe width="300" height="183" src="https://www.youtube.com/embed/XFUMam1oGXI?si=v6pW48iS5QwWlhj5" title="YouTube video player" frameborder="0" 	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        </div>
+
+    <div class="d-flex justify-content-center presentation">
+        <div id="carouselExampleIndicators" class="carousel carousel-fade">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="mySlide">
+                        <div>The app comprises two independent systems</div>
+                        <div class="slideBody">
+                            <div>
+                                <div class="icon_description">
+                                    <div class="icon">
+                                        <p>JobScraper<p>
+                                        <img th:src="@{/home.png}">
+                                    </div>
+                                    <div><p>Runs on my local server.</p>
+                                        <ul>
+                                            <li> - Extracts job postings from LinkedIn and stores them in the database. </li>
+                                            <li> - Processes found jobs using Large Language Model. </li>
+                                            <li> - Makes a human-like judgment on whether the job is worth my attention. </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="icon_description">
+                                    <div class="icon">
+                                        <p>WebFace<p>
+                                        <img th:src="@{/cloud.png}">
+                                    </div>
+                                    <div><p>Runs in the cloud.</p>
+                                        <ul>
+                                            <li> - Renders results for the front-end according to user authority. </li>
+                                            <li> - Communicates with JobParser via REST API, enabling seamless data exchange.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>	The division of the App into two independent systems helps reduce costs associated with hosting and make it more resilient.
+                                    The lightweight WebFace doesn't require powerful cloud server and provides continuous availability 24 / 7.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="mySlide">
+                        <div>Main perks of the App</div>
+                        <div class="slideBody">
+                            <div>
+                                <ul>
+                                    <li> - Ability to use locally installed LLM </li>
+                                    <li> - Independent models for summarization and decision making </li>
+                                    <li> - Multi-threading parsing for faster processing </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p>	In the current setup, the lightweight Gemma:2b model on my local server performs job summarization. While this model is sufficient for text summarization, it lacks logical reasoning capabilities. To address this limitation, the final decision on whether a job aligns with my skills and experience is outsourced to OpenAI's GPT-3.5-turbo model. This combination of large language models optimally utilizes my server's hardware capabilities and reduces costs, striking a balance between performance and efficiency.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="mySlide pt-2">
+                        <div>Video</div>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/XFUMam1oGXI?si=v6pW48iS5QwWlhj5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+</section>
