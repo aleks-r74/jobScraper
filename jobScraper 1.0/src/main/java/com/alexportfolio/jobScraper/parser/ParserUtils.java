@@ -3,13 +3,20 @@ package com.alexportfolio.jobScraper.parser;
 import com.alexportfolio.jobScraper.JobScraperApplication;
 import com.alexportfolio.jobScraper.service.FileService;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.SessionStorage;
 import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
@@ -28,9 +35,10 @@ public class ParserUtils {
     String broswerStateFileName = "src/main/resources/driverState/browserState.dat";
     String loginUrl = "https://www.linkedin.com/login";
     static Map<String, Object> browserState = null;
+    private static final Logger logger = LoggerFactory.getLogger(ParserUtils.class);
 
     public ParserUtils() throws IOException {
-        this.driver = new EdgeDriver();
+        this.driver = new ChromeDriver();
         wDriver = new WebDriverWait(driver, Duration.ofSeconds(5));
         js = (JavascriptExecutor) driver;
         driver.manage().window().maximize();
@@ -217,21 +225,28 @@ public class ParserUtils {
     }
 
     public <T> void saveObject(T obj, String fileName){
-        try(var oos = new ObjectOutputStream(new FileOutputStream(fileName))){
-            oos.writeObject(obj);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(fileName + " not found");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        if(!Files.exists(Path.of(fileName)))
+            try {
+                Files.createFile(Path.of(fileName));
+            } catch (IOException e) {
+                logger.info("Couldn't create " + fileName);
+            }
+
+            try(var oos = new ObjectOutputStream(new FileOutputStream(fileName))){
+                oos.writeObject(obj);
+            } catch (FileNotFoundException e) {
+                logger.info("File not found " + fileName);
+            } catch (IOException e) {
+                logger.info("Couldn't write to " + fileName);
+            }
     }
     public <T> T loadObject(String fileName){
         try(var ois = new ObjectInputStream(new FileInputStream(fileName))){
             return (T) ois.readObject();
         } catch (FileNotFoundException e) {
-            System.out.println((fileName+" not found"));
+           logger.info((fileName+" not found"));
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Exception in ParserUtils.loadObject: "+e.getMessage());
+            logger.info("Exception in ParserUtils.loadObject: "+e.getMessage());
         }
         return null;
     }
