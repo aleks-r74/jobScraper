@@ -28,6 +28,10 @@ public class PostProcessor implements BeanPostProcessor {
     @Qualifier("llmServiceOpenAi")
     private LlmService llmOpenAi;
 
+    @Autowired
+    @Qualifier("llmServicePetals")
+    private LlmService llmPetals;
+
     private static final Logger logger = LoggerFactory.getLogger(JobDescriptionSummarizationDaemon.class);
 
     @Override
@@ -39,6 +43,9 @@ public class PostProcessor implements BeanPostProcessor {
             } else if ("llmServiceOpenAi".equals(summarizationBeanName)) {
                 daemon.setLlmService(llmOpenAi);
                 logger.info("llmServiceOpenAi bean is set for summarization");
+            } else if ("llmServicePetals".equals(summarizationBeanName)) {
+                daemon.setLlmService(llmPetals);
+                logger.info("llmServicePetals bean is set for summarization");
             } else {
                 daemon.setLlmService(null);
                 logger.info("summarization is OFF");
