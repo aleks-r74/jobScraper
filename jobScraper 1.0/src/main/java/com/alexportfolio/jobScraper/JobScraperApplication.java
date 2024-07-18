@@ -11,11 +11,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
 @EntityScan("com.alexportfolio.jobScraper.entity")
+@EnableScheduling
 public class JobScraperApplication {
 	@Value("${parsing.delay}")
 	int parsingDelay;

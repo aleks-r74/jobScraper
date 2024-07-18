@@ -10,6 +10,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.concurrent.*;
@@ -30,27 +31,24 @@ public class JobDescriptionSummarizationDaemon extends Daemon {
         this.llmService = llmService;
     }
 
-    @PostConstruct
-    public void init(){
+    @Scheduled(fixedDelay=5, timeUnit=TimeUnit.MINUTES)
+    public void scheduled(){
         if(llmService==null) return;
+        // load cards
+        loadCards();
+        // evaluate
+        if(records.isEmpty()) {
+            logger.info("no records for summarization");
+            return;
+        }
+        Iterator<JobCard> iterator = records.get().iterator();
+        while(iterator.hasNext()){
+            var card = iterator.next();
+            card = summarize(card);
+            saveCard(card);
+            iterator.remove();
+        }
 
-        Runnable task = ()->{
-            // load cards
-            loadCards();
-            // evaluate
-            if(records.isEmpty()) {
-                logger.info("no records for summarization");
-                return;
-            }
-            Iterator<JobCard> iterator = records.get().iterator();
-            while(iterator.hasNext()){
-                var card = iterator.next();
-                card = summarize(card);
-                saveCard(card);
-                iterator.remove();
-            }
-        };
-        es.scheduleWithFixedDelay(task, 0, 5, TimeUnit.MINUTES);
     }
 
     private JobCard summarize(JobCard card) {

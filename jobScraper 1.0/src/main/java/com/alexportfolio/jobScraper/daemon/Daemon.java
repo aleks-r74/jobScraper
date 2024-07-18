@@ -58,5 +58,5 @@ abstract class Daemon {
     public void setLlmService(LlmService llmService) {
         this.llmService = llmService;
     }
-    abstract void init();
+
 }

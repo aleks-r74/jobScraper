@@ -7,6 +7,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import java.util.Iterator;
 import java.util.List;
@@ -21,29 +22,25 @@ public class JobAssessmentDaemon extends Daemon{
         super(jobRepositoryService,fileService);
     }
 
-    @PostConstruct
-    public void init(){
+    @Scheduled(fixedDelay=5, timeUnit=TimeUnit.MINUTES)
+    public void scheduled(){
         if(llmService==null) return;
-
-        Runnable task = ()->{
-            // load cards
-            loadCards();
-            // evaluate
-            if(records.isEmpty()) {
-                logger.info("no records for making decision");
-                return;
+        // load cards
+        loadCards();
+        // evaluate
+        if(records.isEmpty()) {
+            logger.info("no records for making decision");
+            return;
+        }
+        Iterator<JobCard> iterator = records.get().iterator();
+        while(iterator.hasNext()){
+            var card = iterator.next();
+            if(card.getDescription().startsWith("summary")){
+                card = makeDecision(card);
+                saveCard(card);
             }
-            Iterator<JobCard> iterator = records.get().iterator();
-            while(iterator.hasNext()){
-                var card = iterator.next();
-                if(card.getDescription().startsWith("summary")){
-                    card = makeDecision(card);
-                    saveCard(card);
-                }
-                iterator.remove();
-            }
-        };
-        es.scheduleWithFixedDelay(task, 0, 5, TimeUnit.MINUTES);
+            iterator.remove();
+        }
     }
 
     private JobCard makeDecision(JobCard card) {
