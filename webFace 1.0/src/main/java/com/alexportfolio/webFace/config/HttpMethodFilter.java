@@ -21,7 +21,7 @@ public class HttpMethodFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String httpMethod = request.getMethod();
         if(!isValidHttpMethod(httpMethod))
-            throw new IllegalArgumentException(httpMethod);
+            return;
         filterChain.doFilter(request,response);
     }
 
