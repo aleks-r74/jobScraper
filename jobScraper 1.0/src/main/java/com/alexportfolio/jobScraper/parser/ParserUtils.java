@@ -4,7 +4,10 @@ import com.alexportfolio.jobScraper.JobScraperApplication;
 import com.alexportfolio.jobScraper.service.FileService;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.GeckoDriverInfo;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.SessionStorage;
 import org.openqa.selenium.html5.WebStorage;
@@ -31,14 +34,14 @@ public class ParserUtils {
     WebDriverWait wDriver;
     JavascriptExecutor js;
     public static Map<String,String> xpaths;
-    //public static Map<String, List<String>> filteringKeywords;
-    String broswerStateFileName = "src/main/resources/driverState/browserState.dat";
+
+    String broswerStateFileName = "settings/driverState/browserState.dat";
     String loginUrl = "https://www.linkedin.com/login";
     static Map<String, Object> browserState = null;
     private static final Logger logger = LoggerFactory.getLogger(ParserUtils.class);
 
     public ParserUtils() throws IOException {
-        this.driver = new ChromeDriver();
+        this.driver = new EdgeDriver();
         wDriver = new WebDriverWait(driver, Duration.ofSeconds(5));
         js = (JavascriptExecutor) driver;
         driver.manage().window().maximize();
@@ -129,12 +132,11 @@ public class ParserUtils {
         }
     }
 
-    //static for multithreading use
-    public static void loadXpathProperties() throws IOException {
+    public void loadXpathProperties() throws IOException {
         if (xpaths != null) return; // return if xpaths exists
 
         Properties properties = new Properties();
-        try(var fis = new FileInputStream("./src/main/resources/xpath.properties")){
+        try(var fis = this.getClass().getResourceAsStream("/xpath.properties")){
             properties.load(fis);
         }
         // remove empty properties and remove whitespaces in keys and values

@@ -20,8 +20,11 @@ public class HttpMethodFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String httpMethod = request.getMethod();
-        if(!isValidHttpMethod(httpMethod))
+        if(!isValidHttpMethod(httpMethod)) {
+            response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "Invalid HTTP method");
+            System.out.println("Got Invalid HTTP Method: " + httpMethod);
             return;
+        }
         filterChain.doFilter(request,response);
     }
 

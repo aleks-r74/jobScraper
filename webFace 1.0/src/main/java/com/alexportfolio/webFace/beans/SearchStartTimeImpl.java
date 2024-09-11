@@ -1,7 +1,6 @@
 package com.alexportfolio.webFace.beans;
 
-import com.alexportfolio.webFace.Service.JobRepoService;
-import jakarta.annotation.PostConstruct;
+import com.alexportfolio.webFace.service.JobRepoService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 

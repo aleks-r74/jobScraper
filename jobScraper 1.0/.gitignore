@@ -1,4 +1,4 @@
-src/main/resources/driverState/browserState.dat
+settings/driverState/browserState.dat
 
 HELP.md
 target/
@@ -6,7 +6,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 *.env
-*.dat
 
 ### STS ###
 .apt_generated

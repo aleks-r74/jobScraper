@@ -16,17 +16,16 @@ public class WebFaceApplication {
 
 	public static void main(String[] args) {
 		TimeZone.setDefault(TimeZone.getTimeZone("America/New_York"));
-		SpringApplication.run(WebFaceApplication.class, args);
+		try {
+			SpringApplication.run(WebFaceApplication.class, args);
+		} catch (Exception e){
+			System.out.println("Exception caught: " + e.getMessage());
+		}
 	}
+
 	@Bean
 	RestTemplate restTemplate(){
 		return new RestTemplate();
 	}
-	@Bean
-	CommandLineRunner commandLineRunner(JobRepository jobRepository){
-		return r -> {
 
-
-		};
-	}
 }

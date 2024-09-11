@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class FileService   {
-    @Value("${settings.path}")
-    String path = "./src/main/resources/";
+
+    String path = "settings/";
     public String linksFn = "links.txt";
     public String keywordsFn = "keywords.properties";
     public String resumeFn = "resume.txt";

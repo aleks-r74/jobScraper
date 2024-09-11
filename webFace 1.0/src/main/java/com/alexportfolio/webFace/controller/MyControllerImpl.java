@@ -1,7 +1,7 @@
 package com.alexportfolio.webFace.controller;
 
-import com.alexportfolio.webFace.Service.RestService;
-import com.alexportfolio.webFace.Service.JobRepoService;
+import com.alexportfolio.webFace.service.RestService;
+import com.alexportfolio.webFace.service.JobRepoService;
 import com.alexportfolio.webFace.beans.SearchStartTime;
 import com.alexportfolio.webFace.entity.JobCard;
 import org.springframework.data.domain.Page;

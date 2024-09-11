@@ -1,6 +1,4 @@
-package com.alexportfolio.webFace.Service;
-
-import jakarta.annotation.PostConstruct;
+package com.alexportfolio.webFace.service;
 
 import java.util.List;
 import java.util.Properties;
