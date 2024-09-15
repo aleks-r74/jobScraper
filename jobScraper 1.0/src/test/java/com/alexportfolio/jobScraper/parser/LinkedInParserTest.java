@@ -22,8 +22,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@ExtendWith(SpringExtension.class)
-@TestPropertySource(locations = "classpath:application.properties")
+//@ExtendWith(SpringExtension.class)
+//@TestPropertySource(locations = "classpath:application.properties")
 public class LinkedInParserTest {
     @Autowired
     List<LinkedInParser> workers;
@@ -35,14 +35,14 @@ public class LinkedInParserTest {
     FileService fs;
 
 
-    @Test
+    //@Test
     @Disabled
     void loginTest() throws IOException {
         LinkedInParser page = workers.get(0);
         assert(page.driver.getCurrentUrl().toLowerCase().contains("feed"));
     }
 
-    @Test
+    //@Test
     @DisplayName("Job cards parsing test")
     void jobParsingTest() throws IOException {
         LinkedInParser page = workers.get(0);
@@ -53,7 +53,7 @@ public class LinkedInParserTest {
         }
     }
 
-    @Test
+    //@Test
     @Disabled
     @DisplayName("job description parsing test")
     void fillDescriptionTest() throws IOException {

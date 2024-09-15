@@ -5,6 +5,7 @@ import com.alexportfolio.jobScraper.service.ParserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,8 +27,10 @@ public class JobScraperApplication {
 	int cleanupDelay;
 	static ConfigurableApplicationContext context;
 	private static final Logger logger = LoggerFactory.getLogger(JobScraperApplication.class);
+	private static ClassLoader mainThreadClassLoader;
 
 	public static void main(String[] args) {
+		mainThreadClassLoader = Thread.currentThread().getContextClassLoader();
 		context = SpringApplication.run(JobScraperApplication.class, args);
 	}
 
@@ -47,12 +50,20 @@ public class JobScraperApplication {
 		};
 
 	}
+
 	String currentTime(){
 		var formatter = DateTimeFormatter.ofPattern("MMMM/dd/yyyy 'at' hh:mm ");
 		return LocalDateTime.now().format(formatter);
 	}
 
-	public static ConfigurableApplicationContext getContext() {
-		return context;
+	public static void restart() {
+		ApplicationArguments args = context.getBean(ApplicationArguments.class);
+		Thread thread = new Thread(() -> {
+			context.close();
+			context = SpringApplication.run(JobScraperApplication.class, args.getSourceArgs());
+		});
+		thread.setContextClassLoader(mainThreadClassLoader);
+		thread.setDaemon(false);
+		thread.start();
 	}
 }

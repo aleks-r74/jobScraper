@@ -75,10 +75,4 @@ public class Rest {
         return resp;
     }
 
-    @PostMapping("/shutdown")
-    @ResponseStatus(HttpStatus.OK)
-    String shutDown(){
-        JobScraperApplication.getContext().close();
-        return "shutdown request accepted";
-    }
 }

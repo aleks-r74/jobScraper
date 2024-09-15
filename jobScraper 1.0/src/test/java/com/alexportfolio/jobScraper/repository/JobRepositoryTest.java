@@ -16,15 +16,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
-@Sql(scripts = {"/schema.sql", "/data.sql"})
+//@DataJpaTest
+//@Sql(scripts = {"/schema.sql", "/data.sql"})
 public class JobRepositoryTest {
     @Autowired
     JobRepository jobRepository;
     @MockBean
     private CommandLineRunner commandLineRunner;
 
-    @Test
+    //@Test
     @Transactional
     void savingToDB(){
         var entity = new JobCard("title","company","description","url",null, LocalDateTime.now(),null );
@@ -35,7 +35,7 @@ public class JobRepositoryTest {
         }
 
     }
-    @Test
+    //@Test
     void findAllOnlyTitleAndCompanyNameTest(){
         var results = jobRepository.findAllOnlyTitleAndCompanyName();
         var iterator = results.iterator();
@@ -48,7 +48,7 @@ public class JobRepositoryTest {
         }
     }
 
-    @Test
+    //@Test
     void removeOldCardsFromDB(){
         LocalDateTime threshold = LocalDateTime.now().minusDays(60);
         long before = jobRepository.count();

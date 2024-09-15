@@ -1,10 +1,13 @@
 package com.alexportfolio.jobScraper.service;
 
 
+import com.alexportfolio.jobScraper.JobScraperApplication;
 import com.alexportfolio.jobScraper.entity.JobCard;
 import com.alexportfolio.jobScraper.parser.LinkedInParser;
 import com.alexportfolio.jobScraper.repository.JobRepositoryService;
 import jakarta.annotation.PreDestroy;
+import org.openqa.selenium.NoSuchSessionException;
+import org.openqa.selenium.NoSuchWindowException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +41,7 @@ public class ParserServiceImpl implements ParserService {
     }
     @PreDestroy
     void destroyWorkers(){
-        workers.forEach(w->w.destroy());
+        workers.forEach(LinkedInParser::destroy);
     }
     void runJobTitleParsing() {
         logger.debug("run JobTitleParsing()");
@@ -64,12 +67,10 @@ public class ParserServiceImpl implements ParserService {
         for(var result: resultList){
             try {
                 storage.addAll(result.get());
-            } catch (InterruptedException e) {
+            }
+            catch (ExecutionException | InterruptedException e) {
                 logger.debug("Exception while runJobTitleParsing's parsingTask " + e.getMessage());
-                //throw new RuntimeException(e);
-            } catch (ExecutionException e) {
-                logger.debug("Exception while runJobTitleParsing's parsingTask " + e.getMessage());
-                //throw new RuntimeException(e);
+                throw new RuntimeException(e);
             }
         }
         logger.debug("Job titles are parsed");
@@ -99,6 +100,7 @@ public class ParserServiceImpl implements ParserService {
                 filledCards.addAll(Set.copyOf(result.get()));
             } catch (ExecutionException | InterruptedException e) {
                 logger.debug("Exception while runJobDescriptionParsing's parsingTask " + e.getMessage());
+                throw new RuntimeException(e);
             }
         }
         storage = filledCards;
@@ -145,8 +147,9 @@ public class ParserServiceImpl implements ParserService {
             runJobDescriptionParsing();
             // persist parsed cards to DB
             jobRepositoryService.saveAll(storage);
-        } catch (RuntimeException e){
-            logger.info("Exception in ParserServiceImpl.runParsing() " + e);
+        }
+        catch (RuntimeException e){
+            JobScraperApplication.restart();
         }
     }
 }

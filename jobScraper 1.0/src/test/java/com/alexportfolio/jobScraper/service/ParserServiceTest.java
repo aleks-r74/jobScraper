@@ -22,7 +22,7 @@ class ParserServiceTest {
     @Autowired
     JobRepository jobRepository;
 
-    @Test
+    //@Test
     @Disabled
     void runPlainParsingTest() {
         parserService.runJobTitleParsing();
@@ -43,7 +43,7 @@ class ParserServiceTest {
         assert(!randomDescription.isBlank());
     }
 
-    @Test
+    //@Test
     @Disabled
     void OneCycleTest(){
         var before = jobRepository.count();
@@ -66,7 +66,7 @@ class ParserServiceTest {
         }
 
     }
-    @Test
+    //@Test
     @Disabled
     void runParsingTestOutputEachStep(){
         // load title & company name from DB

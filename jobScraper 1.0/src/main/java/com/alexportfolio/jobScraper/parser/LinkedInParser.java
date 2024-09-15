@@ -147,5 +147,6 @@ public class LinkedInParser extends ParserUtils {
 
     public void destroy() {
         driver.quit();
+        driver.close();
     }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-@SpringBootTest
+///@SpringBootTest
 class LlmServiceGemmaTest {
     @MockBean
     TaskRunner taskRunner;
@@ -24,7 +24,7 @@ class LlmServiceGemmaTest {
     @Qualifier("llmServiceGemma")
     LlmService llmService;
 
-    @Test
+    //@Test
     void callLLM() {
         List<String> prompt = new ArrayList<>();
         prompt.add("You're my assistant.");

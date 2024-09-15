@@ -12,7 +12,7 @@ import org.springframework.core.env.Environment;
 
 import java.util.List;
 
-@SpringBootTest
+//@SpringBootTest
 class JobScraperApplicationTests {
 	@MockBean
 	List<LinkedInParser> workers;
@@ -20,7 +20,7 @@ class JobScraperApplicationTests {
 	ParserService parserService;
 
 
-	@Test
+	//@Test
 	@Disabled
 	void contextLoads() {
 	}

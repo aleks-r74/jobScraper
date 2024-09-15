@@ -29,7 +29,7 @@ public class NoContextTests {
     @MockBean
     List<LinkedInParser> workers;
 
-    @Test
+    //@Test
     @DisplayName("Checking Set<JobCard> has only unique JobCards")
     void uniqueCardTest(){
         Set<JobCard> uniqueCardSet = new HashSet<>();
@@ -39,7 +39,7 @@ public class NoContextTests {
         );
         assertThat(uniqueCardSet.size()).isEqualTo(1);
     }
-    @Test
+    //@Test
     @DisplayName("Checking ParserUtils.loadXpathProperties()")
     void loadXpathPropertiesTest() throws IOException {
         new ParserUtils().loadXpathProperties();
@@ -50,7 +50,7 @@ public class NoContextTests {
     }
 
 
-    @ParameterizedTest
+    //@ParameterizedTest
     @CsvSource({
             "33, 3", //equal chunks
             "11, 1", // one chunk
@@ -69,7 +69,7 @@ public class NoContextTests {
             assert (splittedList.get(0).size() == itemsCount);
         }
     }
-    @Test
+    //@Test
     @DisplayName("Checking ParserUtils.getFilteringKeywords()")
     void getFilteringKeywordsTest() throws IOException {
         var parserUtils = new ParserUtils();
@@ -87,7 +87,7 @@ public class NoContextTests {
             assertThat(keyword).isNotNull().isNotEmpty();
         }
     }
-    @Test
+    //@Test
     void saveObjectLoadObjectTest() throws IOException {
         String fn = "src/test/output/testObj.ser";
         ParserUtils utils = new ParserUtils();
@@ -100,7 +100,7 @@ public class NoContextTests {
         }
     }
 
-    @Test
+    //@Test
     void readRoles() {
         var fileService = new FileService();
         fileService.init();

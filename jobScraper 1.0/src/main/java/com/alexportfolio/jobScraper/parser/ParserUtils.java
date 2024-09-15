@@ -44,7 +44,7 @@ public class ParserUtils {
         this.driver = new EdgeDriver();
         wDriver = new WebDriverWait(driver, Duration.ofSeconds(5));
         js = (JavascriptExecutor) driver;
-        driver.manage().window().maximize();
+        driver.manage().window().minimize();
         loadXpathProperties();
     }
 
@@ -69,8 +69,6 @@ public class ParserUtils {
             }catch(TimeoutException | NoElementsException e){
                 if(i==1) return Optional.empty();
                 sleep(2000);
-            }catch (NoSuchWindowException e){
-                JobScraperApplication.getContext().close();
             }
         return element;
     }
@@ -87,8 +85,6 @@ public class ParserUtils {
             } catch(TimeoutException | NoElementsException e){
                 if(i==1) return Optional.empty();
                 sleep(2000);
-            } catch (NoSuchWindowException e){
-                JobScraperApplication.getContext().close();
             }
         return items;
     }

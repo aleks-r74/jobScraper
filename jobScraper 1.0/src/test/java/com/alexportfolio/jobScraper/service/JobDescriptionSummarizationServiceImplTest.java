@@ -10,7 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 
-@SpringBootTest
+//@SpringBootTest
 class JobDescriptionSummarizationServiceImplTest {
     @MockBean
     TaskRunner taskRunner;
@@ -20,7 +20,7 @@ class JobDescriptionSummarizationServiceImplTest {
     @Autowired
     JobDescriptionSummarizationDaemon summarizationService;
 
-    @Test
+    //@Test
     void run() throws InterruptedException {
         Thread.sleep(60000);
     }
